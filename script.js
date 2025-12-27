@@ -20,7 +20,7 @@ document.getElementById('fileInput').addEventListener('change', async (event) =>
         const followingJSON = JSON.parse(await followingFile.async('string')).relationships_following;
 
         const followers = new Set(followersJSON.map(f => f.string_list_data[0].value));
-        const following = new Set(followingJSON.map(f => f.string_list_data[0].value));
+        const following = new Set(followingJSON.map(f => f.title));
 
         const notFollowingBack = Array.from(following).filter(user => !followers.has(user));
         const notFollowedBack = Array.from(followers).filter(user => !following.has(user));
